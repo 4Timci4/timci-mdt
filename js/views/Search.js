@@ -148,15 +148,35 @@ export default {
         </div>
     `,
     setup() {
-        const { ref, computed } = Vue;
+        const { ref, computed, watch, onMounted } = Vue;
 
-        const searchType = ref('citizen'); // 'citizen' or 'vehicle'
-        const searchQuery = ref('');
+        // Restore state from localStorage
+        const savedState = JSON.parse(localStorage.getItem('mdt_search_state') || '{}');
+
+        const searchType = ref(savedState.searchType || 'citizen'); // 'citizen' or 'vehicle'
+        const searchQuery = ref(savedState.searchQuery || '');
         const isSearching = ref(false);
-        const hasSearched = ref(false);
-        const results = ref([]);
-        const showDetailModal = ref(false);
-        const selectedResult = ref(null);
+        const hasSearched = ref(savedState.hasSearched || false);
+        const results = ref(savedState.results || []);
+        const showDetailModal = ref(savedState.showDetailModal || false);
+        const selectedResult = ref(savedState.selectedResult || null);
+
+        // Persist state changes
+        const persistState = () => {
+            const stateToSave = {
+                searchType: searchType.value,
+                searchQuery: searchQuery.value,
+                hasSearched: hasSearched.value,
+                results: results.value,
+                showDetailModal: showDetailModal.value,
+                selectedResult: selectedResult.value
+            };
+            localStorage.setItem('mdt_search_state', JSON.stringify(stateToSave));
+        };
+
+        watch([searchType, searchQuery, hasSearched, results, showDetailModal, selectedResult], () => {
+            persistState();
+        }, { deep: true });
 
         const searchPlaceholder = computed(() => {
             return searchType.value === 'citizen' 
@@ -166,9 +186,57 @@ export default {
 
         // Mock Database
         const mockCitizens = [
-            { id: 1, fullName: 'Ahmet Yılmaz', identifier: '12345678901', dob: '15.05.1990', gender: 'Erkek', phone: '555-0101', job: 'Taksici', warrant: false, licenses: ['B Sınıfı', 'Silah Taşıma'], criminalRecord: [], photo: null },
-            { id: 2, fullName: 'Mehmet Demir', identifier: '23456789012', dob: '22.08.1985', gender: 'Erkek', phone: '555-0202', job: 'İşsiz', warrant: true, licenses: ['B Sınıfı'], criminalRecord: [{id: 1, crime: 'Hırsızlık', date: '10.01.2023', punishment: '2 Yıl Hapis'}], photo: null },
-            { id: 3, fullName: 'Ayşe Kaya', identifier: '34567890123', dob: '10.12.1995', gender: 'Kadın', phone: '555-0303', job: 'Hemşire', warrant: false, licenses: ['B Sınıfı'], criminalRecord: [], photo: null }
+            {
+                id: 1,
+                fullName: 'Ahmet Yılmaz',
+                identifier: '12345678901',
+                dob: '15.05.1990',
+                gender: 'Erkek',
+                phone: '555-0101',
+                job: 'Taksici',
+                warrant: false,
+                licenses: ['B Sınıfı', 'Silah Taşıma'],
+                criminalRecord: [],
+                photo: null,
+                notes: [
+                    { id: 1, text: "Şahıs agresif tavırlar sergiliyor, yaklaşırken dikkatli olunmalı.", date: "12.12.2024", type: "danger" },
+                    { id: 2, text: "Rutin kontrolde işbirliği yaptı.", date: "10.11.2024", type: "info" }
+                ],
+                assets: [
+                    { id: 1, model: "Ubermacht Oracle", plate: "34 ABC 34", status: "clean" },
+                    { id: 2, model: "Karin Kuruma", plate: "06 DEF 06", status: "danger" }
+                ]
+            },
+            {
+                id: 2,
+                fullName: 'Mehmet Demir',
+                identifier: '23456789012',
+                dob: '22.08.1985',
+                gender: 'Erkek',
+                phone: '555-0202',
+                job: 'İşsiz',
+                warrant: true,
+                licenses: ['B Sınıfı'],
+                criminalRecord: [{id: 1, crime: 'Hırsızlık', date: '10.01.2023', punishment: '2 Yıl Hapis'}],
+                photo: null,
+                notes: [],
+                assets: []
+            },
+            {
+                id: 3,
+                fullName: 'Ayşe Kaya',
+                identifier: '34567890123',
+                dob: '10.12.1995',
+                gender: 'Kadın',
+                phone: '555-0303',
+                job: 'Hemşire',
+                warrant: false,
+                licenses: ['B Sınıfı'],
+                criminalRecord: [],
+                photo: null,
+                notes: [],
+                assets: []
+            }
         ];
 
         const mockVehicles = [

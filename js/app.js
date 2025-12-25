@@ -40,7 +40,8 @@ const app = createApp({
     setup() {
         console.log('%c🚀 MDT Sistemi Başlatılıyor...', 'color: #2563eb; font-size: 14px; font-weight: bold;');
         
-        const currentView = ref('dashboard');
+        // Restore current view from localStorage or default to 'dashboard'
+        const currentView = ref(localStorage.getItem('mdt_current_view') || 'dashboard');
 
         const currentViewComponent = computed(() => {
             switch (currentView.value) {
@@ -52,6 +53,7 @@ const app = createApp({
 
         const setCurrentView = (viewId) => {
             currentView.value = viewId;
+            localStorage.setItem('mdt_current_view', viewId);
         };
         
         return {
