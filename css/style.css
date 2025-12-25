@@ -1,0 +1,310 @@
+/* ========================================
+   MDT SYSTEM - LSPD COLOR THEME
+   Los Santos Police Department
+   ======================================== */
+
+/* Custom Scrollbar */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(37, 99, 235, 0.3) transparent;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(37, 99, 235, 0.3);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(37, 99, 235, 0.5);
+}
+
+/* Glassmorphism Panel */
+.glass-panel {
+    background: rgba(19, 19, 26, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(37, 99, 235, 0.1);
+}
+
+/* Modern Card Styles */
+.modern-card {
+    background: #13131a;
+    border: 1px solid rgba(37, 99, 235, 0.1);
+    border-radius: 16px;
+    transition: all 0.2s ease;
+}
+
+.modern-card:hover {
+    border-color: rgba(37, 99, 235, 0.3);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Status Indicators */
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    position: relative;
+}
+
+.status-dot.active {
+    background: #10b981;
+}
+
+.status-dot.busy {
+    background: #f59e0b;
+}
+
+.status-dot.danger {
+    background: #ef4444;
+}
+
+/* Modern Badge Styles */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35rem 0.65rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 6px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+}
+
+.badge-danger {
+    background: rgba(239, 68, 68, 0.15);
+    color: #fca5a5;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.badge-warning {
+    background: rgba(245, 158, 11, 0.15);
+    color: #fcd34d;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.badge-success {
+    background: rgba(16, 185, 129, 0.15);
+    color: #6ee7b7;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.badge-info {
+    background: rgba(37, 99, 235, 0.15);
+    color: #93c5fd;
+    border: 1px solid rgba(37, 99, 235, 0.3);
+}
+
+/* Modern Data Table */
+.data-table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.data-table th {
+    padding: 0.85rem 1rem;
+    text-align: left;
+    font-weight: 700;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(163, 163, 170, 0.9);
+    background: rgba(19, 19, 26, 0.6);
+    border-bottom: 1px solid rgba(37, 99, 235, 0.1);
+}
+
+.data-table td {
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid rgba(38, 38, 50, 0.5);
+    transition: all 0.2s ease;
+}
+
+.data-table tr {
+    transition: all 0.2s ease;
+}
+
+.data-table tbody tr:hover td {
+    background: rgba(37, 99, 235, 0.05);
+    border-bottom-color: rgba(37, 99, 235, 0.2);
+}
+
+.data-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Mono Font for Data */
+.mono-data {
+    font-family: 'JetBrains Mono', monospace;
+    font-feature-settings: 'tnum';
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Modern Button Styles */
+.btn-modern {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 8px;
+    letter-spacing: 0.02em;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.btn-modern:hover {
+    transform: translateY(-1px);
+}
+
+.btn-modern:active {
+    transform: translateY(0);
+}
+
+.btn-primary {
+    background: #2563eb;
+    border-color: #2563eb;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #1d4ed8;
+    border-color: #1d4ed8;
+}
+
+.btn-danger {
+    background: rgba(239, 68, 68, 0.15);
+    border-color: rgba(239, 68, 68, 0.4);
+    color: #fca5a5;
+}
+
+.btn-danger:hover {
+    background: #ef4444;
+    color: white;
+    border-color: #ef4444;
+}
+
+/* Gradient Text - Removed, using fallback */
+.gradient-text {
+    color: #3b82f6;
+}
+
+/* Subtle Background Pattern */
+.bg-pattern {
+    background: #0f111a;
+}
+
+/* Loading State */
+.skeleton {
+    background: rgba(38, 38, 50, 0.5);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Input Styles */
+input, select, textarea {
+    transition: all 0.2s ease;
+    background: rgba(19, 19, 26, 0.8);
+    border: 1px solid rgba(38, 38, 50, 0.8);
+    color: rgba(244, 244, 245, 0.9);
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: rgba(37, 99, 235, 0.5);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    background: rgba(26, 26, 36, 0.9);
+}
+
+/* Smooth Fade In */
+.fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* FiveM MDT Specific Enhancements */
+.call-assignment-success {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+/* Officer Badge Glow - Removed glow */
+.officer-badge-glow {
+    position: relative;
+}
+
+/* Real-time Update Indicator */
+.realtime-update {
+    position: relative;
+    border-left: 2px solid #10b981;
+}
+
+/* Enhanced Hover States for Interactive Elements */
+.call-row-interactive {
+    transition: all 0.2s ease;
+}
+
+.call-row-interactive:hover {
+    transform: translateX(4px);
+    background: rgba(37, 99, 235, 0.08);
+    border-left: 3px solid rgba(37, 99, 235, 0.6);
+}
+
+/* Micro-interactions for Status Changes */
+.status-change-animation {
+    animation: statusChange 0.8s ease-out;
+}
+
+@keyframes statusChange {
+    0% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1) rotate(2deg);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+/* Loading Button States */
+.btn-claiming {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+/* High Priority Call Alert */
+.priority-critical-alert {
+    border: 1px solid #ef4444;
+    background: rgba(239, 68, 68, 0.1);
+}

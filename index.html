@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="tr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MDT - Los Santos Police Department</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (Play CDN for development) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        md: {
+                            bg: '#0a0a0f',
+                            surface: '#13131a',
+                            surface2: '#1a1a24',
+                            border: '#262632',
+                            primary: '#2563eb',      // LSPD Blue
+                            primary2: '#1d4ed8',     // Darker blue
+                            accent: '#0891b2',       // Cyan accent
+                            success: '#10b981',
+                            warning: '#f59e0b',
+                            danger: '#ef4444',
+                            text: {
+                                main: '#f4f4f5',
+                                muted: '#a1a1aa',
+                                dim: '#71717a'
+                            }
+                        }
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'none',
+                        'gradient-primary': 'none',
+                        'gradient-accent': 'none',
+                        'gradient-danger': 'none',
+                        'gradient-success': 'none',
+                    },
+                    boxShadow: {
+                        'glow-primary': 'none',
+                        'glow-accent': 'none',
+                        'glow-danger': 'none',
+                        'card': '0 4px 24px -1px rgba(0, 0, 0, 0.4), 0 2px 8px -1px rgba(0, 0, 0, 0.2)',
+                        'card-hover': '0 8px 32px -2px rgba(0, 0, 0, 0.5), 0 4px 12px -2px rgba(0, 0, 0, 0.3)',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out',
+                        'slide-up': 'slideUp 0.4s ease-out',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(10px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-md-bg text-md-text-main font-sans antialiased overflow-hidden selection:bg-md-primary selection:text-white">
+    <div id="app"></div>
+    
+    <!-- Vue 3 (CDN) -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    
+    <!-- Main App Script -->
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
