@@ -195,12 +195,16 @@ export default {
                 phone: '555-0101',
                 job: 'Taksici',
                 warrant: false,
-                licenses: ['B Sınıfı', 'Silah Taşıma'],
-                criminalRecord: [],
+                licenses: ['B Sınıfı Ehliyet', 'Silah Taşıma Ruhsatı', 'Taksi Plakası Ruhsatı'],
+                criminalRecord: [
+                    {id: 1, crime: 'Trafik Kuralları İhlali', date: '15.03.2023', punishment: '500 TL Para Cezası'},
+                    {id: 2, crime: 'Hız Sınırı Aşımı', date: '22.07.2022', punishment: '300 TL Para Cezası'}
+                ],
                 photo: null,
                 notes: [
-                    { id: 1, text: "Şahıs agresif tavırlar sergiliyor, yaklaşırken dikkatli olunmalı.", date: "12.12.2024", type: "danger" },
-                    { id: 2, text: "Rutin kontrolde işbirliği yaptı.", date: "10.11.2024", type: "info" }
+                    { id: 1, text: "Şahıs agresif tavırlar sergiliyor, yaklaşırken dikkatli olunmalı. Özellikle gece saatlerinde çok sinirli oluyor.", date: "12.12.2024", type: "danger" },
+                    { id: 2, text: "Rutin kontrolde işbirliği yaptı, kibar ve saygılı davrandı.", date: "10.11.2024", type: "info" },
+                    { id: 3, text: "Taksi durağında diğer şoförlerle kavga ettiği bildirildi.", date: "05.10.2024", type: "danger" }
                 ],
                 assets: [
                     { id: 1, model: "Ubermacht Oracle", plate: "34 ABC 34", status: "clean" },
@@ -216,11 +220,20 @@ export default {
                 phone: '555-0202',
                 job: 'İşsiz',
                 warrant: true,
-                licenses: ['B Sınıfı'],
-                criminalRecord: [{id: 1, crime: 'Hırsızlık', date: '10.01.2023', punishment: '2 Yıl Hapis'}],
+                licenses: ['B Sınıfı Ehliyet'],
+                criminalRecord: [
+                    {id: 1, crime: 'Silahlı Soygun', date: '10.01.2023', punishment: '8 Yıl Hapis'},
+                    {id: 2, crime: 'Uyuşturucu Bulundurma', date: '15.06.2022', punishment: '3 Yıl Hapis'},
+                    {id: 3, crime: 'Sahte Evrak Düzenleme', date: '03.12.2021', punishment: '2 Yıl Hapis'}
+                ],
                 photo: null,
-                notes: [],
-                assets: []
+                notes: [
+                    { id: 1, text: "Şahıs silahlı ve tehlikeli olarak değerlendiriliyor. Yaklaşımda maksimum güvenlik önlemi alınmalı.", date: "20.11.2024", type: "danger" },
+                    { id: 2, text: "Uyuşturucu satıcıları ile irtibat halinde olduğu istihbar edilmiştir.", date: "15.09.2024", type: "danger" }
+                ],
+                assets: [
+                    { id: 1, model: "Albany Primo", plate: "06 DEF 06", status: "danger" }
+                ]
             },
             {
                 id: 3,
@@ -231,18 +244,131 @@ export default {
                 phone: '555-0303',
                 job: 'Hemşire',
                 warrant: false,
-                licenses: ['B Sınıfı'],
+                licenses: ['B Sınıfı Ehliyet', 'Sağlık Memuru Sertifikası', 'İlk Yardım Sertifikası'],
                 criminalRecord: [],
                 photo: null,
+                notes: [
+                    { id: 1, text: "Hastane acil servisinde görevli, çok yardımcı ve güvenilir bir kişi.", date: "08.12.2024", type: "info" },
+                    { id: 2, text: "Trafik kazası sırasında yaralılara müdahale etmesinden dolayı teşekkür edildi.", date: "25.10.2024", type: "info" }
+                ],
+                assets: [
+                    { id: 1, model: "Weeny Issi", plate: "35 GHI 35", status: "clean" }
+                ]
+            },
+            {
+                id: 4,
+                fullName: 'Fatma Öztürk',
+                identifier: '45678901234',
+                dob: '03.07.1988',
+                gender: 'Kadın',
+                phone: '555-0404',
+                job: 'Öğretmen',
+                warrant: false,
+                licenses: ['B Sınıfı Ehliyet', 'Öğretmenlik Sertifikası'],
+                criminalRecord: [
+                    {id: 1, crime: 'Park İhlali', date: '12.05.2024', punishment: '100 TL Para Cezası'}
+                ],
+                photo: null,
                 notes: [],
+                assets: [
+                    { id: 1, model: "Vapid Prius", plate: "16 TUV 16", status: "clean" }
+                ]
+            },
+            {
+                id: 5,
+                fullName: 'Ali Koç',
+                identifier: '56789012345',
+                dob: '18.09.1978',
+                gender: 'Erkek',
+                phone: '555-0505',
+                job: 'Berber',
+                warrant: false,
+                licenses: ['B Sınıfı Ehliyet', 'Kuaför Sertifikası'],
+                criminalRecord: [
+                    {id: 1, crime: 'Kavga', date: '28.02.2023', punishment: '1000 TL Para Cezası'},
+                    {id: 2, crime: 'Alkollü Araç Kullanma', date: '14.11.2022', punishment: '5000 TL Para Cezası + 6 Ay Ehliyet İptali'}
+                ],
+                photo: null,
+                notes: [
+                    { id: 1, text: "Alkol problemi olan şahıs, tedavi görmeye başlamış.", date: "20.08.2024", type: "info" }
+                ],
                 assets: []
             }
         ];
 
         const mockVehicles = [
-            { id: 1, plate: '34 ABC 34', model: 'Ubermacht Oracle', color: 'Siyah', owner: 'Ahmet Yılmaz', stolen: false, insurance: true },
-            { id: 2, plate: '06 DEF 06', model: 'Karin Kuruma', color: 'Beyaz', owner: 'Mehmet Demir', stolen: true, insurance: false },
-            { id: 3, plate: '35 GHI 35', model: 'Pfister Comet', color: 'Kırmızı', owner: 'Ayşe Kaya', stolen: false, insurance: true }
+            {
+                id: 1,
+                plate: '34 ABC 34',
+                model: 'Ubermacht Oracle',
+                color: 'Siyah',
+                owner: 'Ahmet Yılmaz',
+                stolen: false,
+                insurance: true
+            },
+            {
+                id: 2,
+                plate: '06 DEF 06',
+                model: 'Karin Kuruma',
+                color: 'Beyaz',
+                owner: 'Mehmet Demir',
+                stolen: true,
+                insurance: false
+            },
+            {
+                id: 3,
+                plate: '35 GHI 35',
+                model: 'Pfister Comet',
+                color: 'Kırmızı',
+                owner: 'Ayşe Kaya',
+                stolen: false,
+                insurance: true
+            },
+            {
+                id: 4,
+                plate: '16 TUV 16',
+                model: 'Vapid Prius',
+                color: 'Mavi',
+                owner: 'Fatma Öztürk',
+                stolen: false,
+                insurance: true
+            },
+            {
+                id: 5,
+                plate: '07 MNO 07',
+                model: 'Albany Primo',
+                color: 'Gri',
+                owner: 'Ali Koç',
+                stolen: false,
+                insurance: false
+            },
+            {
+                id: 6,
+                plate: '42 STU 42',
+                model: 'Benefactor Dubsta',
+                color: 'Siyah',
+                owner: 'Bilinmeyen',
+                stolen: true,
+                insurance: false
+            },
+            {
+                id: 7,
+                plate: '01 XYZ 01',
+                model: 'Enus Super Diamond',
+                color: 'Altın',
+                owner: 'Kemal Arslan',
+                stolen: false,
+                insurance: true
+            },
+            {
+                id: 8,
+                plate: '26 PQR 26',
+                model: 'Weeny Issi',
+                color: 'Pembe',
+                owner: 'Zeynep Yıldız',
+                stolen: false,
+                insurance: true
+            }
         ];
 
         const performSearch = () => {
