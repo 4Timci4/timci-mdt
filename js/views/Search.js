@@ -292,7 +292,9 @@ export default {
                 notes: [
                     { id: 1, text: "Alkol problemi olan şahıs, tedavi görmeye başlamış.", date: "20.08.2024", type: "info" }
                 ],
-                assets: []
+                assets: [
+                    { id: 1, model: "Vapid Prius", plate: "16 TUV 16", status: "clean" }
+                ]
             }
         ];
 
